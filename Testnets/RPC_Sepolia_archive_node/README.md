@@ -111,3 +111,6 @@ curl -X POST http://localhost:8545 \
 ```
 - If the show `false` that means that your node is fully synchronized.
 #
+## 5. RPC urls:
+- `http://YOUR_IP:8545`
+- `ws://YOUR_IP:8546`
