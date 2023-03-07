@@ -29,7 +29,7 @@ mkdir database && mkdir database/geth $$ mkdir database/lighthouse
 sudo openssl rand -hex 32 | tr -d "\n" > "/root/database/jwtsecret"
 ```
 
-## 3. Installing Geth
+## 3. Install Geth
 ```
 sudo add-apt-repository -y ppa:ethereum/ethereum
 ```
@@ -51,7 +51,7 @@ git clone -b unstable https://github.com/sigp/lighthouse.git
 cd lighthouse && make
 ```
 
-## 4. Configuring and launch Geth and Lightnode node.
+## 4. Configuring and launch Geth and Lighthouse node.
 ```
 sudo tee /etc/systemd/system/geth.service > /dev/null <<EOF
 [Unit]
