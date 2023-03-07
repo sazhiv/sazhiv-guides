@@ -77,7 +77,7 @@ sudo systemctl enable geth
 sudo systemctl start geth
 sudo journalctl -u geth -f -n 100
 ```
-Our node start looking for peers and beacon. Now we need configure our prysm beacon.
+Our node start looking for peers and beacon. Now we need configure our lighthouse beacon.
 ```
 sudo tee /etc/systemd/system/lighthouse.service > /dev/null <<EOF
 [Unit]
