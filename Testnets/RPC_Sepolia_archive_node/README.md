@@ -51,7 +51,7 @@ git clone -b unstable https://github.com/sigp/lighthouse.git
 cd lighthouse && make
 ```
 
-## 4. Configuring and launch Geth and Lighthouse node.
+## 5. Configuring and launch Geth and Lighthouse node.
 ```
 sudo tee /etc/systemd/system/geth.service > /dev/null <<EOF
 [Unit]
@@ -111,6 +111,6 @@ curl -X POST http://localhost:8545 \
 ```
 - If the show `false` that means that your node is fully synchronized.
 #
-## 5. RPC urls:
+## 6. RPC urls:
 - `http://YOUR_IP:8545`
 - `ws://YOUR_IP:8546`
