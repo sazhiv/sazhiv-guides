@@ -196,11 +196,81 @@ sudo systemctl restart vald
 sed -i 's/#Storage=auto/Storage=persistent/g' /etc/systemd/journald.conf
 sudo systemctl restart systemd-journald
 
-journalctl -u axelard.service -f -n 100
-journalctl -u tofnd.service -f -n 100
-journalctl -u vald.service -f -n 100
+sudo journalctl -u axelard.service -f -n 100
+sudo journalctl -u tofnd.service -f -n 100
+sudo journalctl -u vald.service -f -n 100
 ```
 Check sync:
 ```
 curl -s localhost:26657/status | jq .result | jq .sync_info
+```
+### 9. Register broadcaster proxy.
+Note: Fund your validator and broadcaster accounts before proceeding.
+```
+axelard tx snapshot register-proxy $BROADCASTER_ADDRESS --from validator --chain-id $CHAIN_ID
+```
+### 9. Create validator.
+```
+IDENTITY="YOUR_KEYBASE_IDENTITY" # optional
+AMOUNT=PUT_AMOUNT_OF_TOKEN_YOU_WANT_TO_DELEGATE
+DENOM=uaxl
+ 
+axelard tx staking create-validator --yes \
+ --amount $AMOUNT$DENOM \
+ --moniker $MONIKER \
+ --commission-rate="0.10" \
+ --commission-max-rate="0.20" \
+ --commission-max-change-rate="0.01" \
+ --min-self-delegation="1" \
+ --pubkey="$(axelard tendermint show-validator)" \
+ --from validator \
+ -b block \
+ --identity=$IDENTITY \
+ --chain-id $CHAIN_ID
+```
+### 9. Register external chains
+See [Support external chains](https://docs.axelar.dev/validator/external-chains)
+```
+axelard tx nexus register-chain-maintainer arbitrum optimism kava celo hero avalanche ethereum-2 fantom moonbeam polygon binance aurora  --from broadcaster --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.4
+```
+### 9. Upgrade Process.
+```
+cd $HOME/binaries
+```
+
+```
+AXELARD_RELEASE=<GIVE_VERSION>
+TOFND_RELEASE=<GIVE_VERSION>
+echo $AXELARD_RELEASE $TOFND_RELEASE
+```
+get axelard, tofnd binaries and rename
+```
+wget https://github.com/axelarnetwork/axelar-core/releases/download/$AXELARD_RELEASE/axelard-linux-amd64-$AXELARD_RELEASE
+wget https://github.com/axelarnetwork/tofnd/releases/download/$TOFND_RELEASE/tofnd-linux-amd64-$TOFND_RELEASE
+mv axelard-linux-amd64-$AXELARD_RELEASE axelard
+mv tofnd-linux-amd64-$TOFND_RELEASE tofnd
+```
+make binaries executable and move
+```
+chmod +x *
+sudo mv * /usr/bin/
+```
+check versions
+```
+axelard version
+echo $AXELARD_RELEASE
+tofnd --help
+echo $TOFND_RELEASE
+```
+restart services
+```
+sudo systemctl restart axelard
+sudo systemctl restart tofnd
+sudo systemctl restart vald
+```
+check logs
+```
+sudo journalctl -u axelard.service -f -n 100
+sudo journalctl -u tofnd.service -f -n 100
+sudo journalctl -u vald.service -f -n 1000
 ```
