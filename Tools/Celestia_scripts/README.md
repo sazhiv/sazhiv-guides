@@ -4,6 +4,17 @@ Script for analysis perfomance [analysis_perfomance.py](https://github.com/sazhi
 
 In this way we see hardware performance of the machine your node is running on, bandwidth used, etc.
 
+Need:
+
+-`python3`
+
+-`psutil`
+
+-`tcpdump`
+
+-`geekbench6`
+
+
 Example performance:
 
 ```CPU usage: 7.1%
