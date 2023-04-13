@@ -3,8 +3,8 @@
 Script for analysis perfomance [analysis_perfomance.py](https://github.com/sazhiv/sazhiv-guides/blob/main/Tools/Celestia_scripts/analysis_perfomance.py)
 
 Example performance:
-`
-CPU usage: 7.1%
+
+```CPU usage: 7.1%
 Memory usage: 28.5%
 Disk usage: 78.8%
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
@@ -25,5 +25,4 @@ Apr 13 03:56:05 Ubuntu-2004-focal-64-minimal kernel: [29511142.010783] device en
 Apr 13 03:56:05 Ubuntu-2004-focal-64-minimal kernel: [29511142.340918] device enp8s0 left promiscuous mode
 
 Geekbench score: []
-Peer connections: ['ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED',]
-`
+Peer connections: ['ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED',]```
