@@ -2,6 +2,8 @@
 
 Script for analysis perfomance [analysis_perfomance.py](https://github.com/sazhiv/sazhiv-guides/blob/main/Tools/Celestia_scripts/analysis_perfomance.py)
 
+In this way we see hardware performance of the machine your node is running on, bandwidth used, etc.
+
 Example performance:
 
 ```CPU usage: 7.1%
@@ -26,3 +28,6 @@ Apr 13 03:56:05 Ubuntu-2004-focal-64-minimal kernel: [29511142.340918] device en
 
 Geekbench score: []
 Peer connections: ['ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED', 'ESTABLISHED',]```
+
+
+
