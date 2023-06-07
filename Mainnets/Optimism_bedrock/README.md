@@ -3,9 +3,9 @@
  <img src="https://dev.optimism.io/content/images/size/w2000/2022/12/bedrock-BLUE.jpg"width="600"/></a>
 </p>
 ### 0. Official sources.
-##### https://community.optimism.io/docs/developers/bedrock/node-operator-guide/
-##### https://community.optimism.io/docs/useful-tools/networks/#optimism-mainnet
-##### https://oplabs.notion.site/Bedrock-Mission-Control-EXTERNAL-fca344b1f799447cb1bcf3aae62157c5
+[Node-operator-guide](https://community.optimism.io/docs/developers/bedrock/node-operator-guide)
+[Configurations](https://community.optimism.io/docs/useful-tools/networks/#optimism-mainnet)
+[Bedrock-Mission-Control](https://oplabs.notion.site/Bedrock-Mission-Control-EXTERNAL-fca344b1f799447cb1bcf3aae62157c5)
 
 ### 1. Update your server.
 ```
