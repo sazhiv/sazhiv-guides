@@ -2,18 +2,17 @@
 <p align="center">
  <img src="https://dev.optimism.io/content/images/size/w2000/2022/12/bedrock-BLUE.jpg"width="600"/></a>
 </p>
-
 ### 0. Official sources.
-- [Node-operator-guide](https://community.optimism.io/docs/developers/bedrock/node-operator-guide)
-- [Configurations](https://community.optimism.io/docs/useful-tools/networks/#optimism-mainnet)
-- [Bedrock Mission Control](https://oplabs.notion.site/Bedrock-Mission-Control-EXTERNAL-fca344b1f799447cb1bcf3aae62157c5)
+##### https://community.optimism.io/docs/developers/bedrock/node-operator-guide/
+##### https://community.optimism.io/docs/useful-tools/networks/#optimism-mainnet
+##### https://oplabs.notion.site/Bedrock-Mission-Control-EXTERNAL-fca344b1f799447cb1bcf3aae62157c5
 
 ### 1. Update your server.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
 ```
-sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux unzip cmake wget liblz4-tool aria2 -y
+sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux unzip cmake wget liblz4-tool aria2 openssl -y
 ```
 ### 2. Install GO.
 ```
@@ -28,15 +27,26 @@ if ! [ -x "$(command -v go)" ]; then
   source ~/.bash_profile
 fi
 ```
-### 3. Get Source code.
+### 3. Create keys.
 ```
 mkdir nodes && cd nodes
 ```
+Create jwt_secret
+```
+openssl rand -hex 32 > $HOME/nodes/mainnet-op-geth/engine_jwt_secret.txt
+sudo chmod 644 $HOME/nodes/mainnet-op-geth/engine_jwt_secret.txt
+```
+Create p2p node key
+```
+openssl rand -hex 32 > $HOME/nodes/mainnet-op-geth/p2pkey.txt
+sudo chmod 644 $HOME/nodes/mainnet-op-geth/p2pkey.txt
+```
+### 4. Get Source code.
 - [op-geth](https://github.com/ethereum-optimism/op-geth/releases) - see latest release
 - [op-node](https://github.com/ethereum-optimism/optimism/releases) - see latest release
 - Full Node Operators: The migrated (Bedrock) datadir required to spin up op-geth has been successfully hosted and is now ready for distribution: https://storage.googleapis.com/oplabs-mainnet-data/mainnet-bedrock.tar
 
-### 4. Compiling the binary.
+### 5. Compiling the binary.
 ```
 cd projects/op-geth
 go build -o ~/go/bin/op-geth ./cmd/geth
@@ -46,7 +56,7 @@ cd projects/optimism
 go build -o ~/go/bin/op-node ./op-node/cmd
 ```
 
-### 5. Create services.
+### 6. Create services.
 #### op-geth
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/op-geth.service
@@ -150,15 +160,14 @@ sudo systemctl enable op-node
 ```
 ##### Note. If you have L1 node erigon, parameter --l1.rpckind=erigon is mandatory, otherwise you can do without it.
 
-### 6. Start all services.
+### 7. Start all services.
 ```
 sudo systemctl daemon-reload
 sudo systemctl restart op-geth
 sudo systemctl restart op-node
 ```
-### 7. Check logs.
+### 8. Check logs.
 ```
 sudo journalctl -u op-geth.service -f -n 100
 sudo journalctl -u op-node.service -f -n 100
 ```
-
